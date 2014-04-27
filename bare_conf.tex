@@ -193,7 +193,7 @@
 
 % *** SPECIALIZED LIST PACKAGES ***
 %
-%\usepackage{algorithmic}
+\usepackage{algorithmic}
 % algorithmic.sty was written by Peter Williams and Rogerio Brito.
 % This package provides an algorithmic environment fo describing algorithms.
 % You can use the algorithmic environment in-text or within a figure
@@ -210,7 +210,28 @@
 % algorithmicx.sty package by Szasz Janos:
 % http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
 
+\usepackage{listings}
+\usepackage{color}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
 
 
 % *** ALIGNMENT PACKAGES ***
@@ -630,14 +651,10 @@ are actually referenced in the tool are listed.
 Finally, the designer can perform code generation using the UML to Java Generator plugin, which uses the extension point of the Acceleo plugin.
 The UML to Java generator plugin was specially modified to recognize the associations between Requirements, UML models and accessibility implementation techniques, creating custom comments in the correct class scopes according to Java regular expression as follows:
 
-\medskip
-
-\noindent
-\begin{verbatim}
-String regex = "//!ACCTRACE!(/)?([^/\\\\0#]+(/)?)+#([^\\*\\*/])+";
-\end{verbatim}
-%
-\noindent
+\begin{lstlisting}
+String regex = "//!ACCTRACE!(/)?([^/\\\\0#]+(/)?)"
+	+ "+#([^\\*\\*/])+";
+\end{lstlisting}
 
 The regular expression was constructed to allow, through a pre-defined string, recovery of Acctrace file. The personalized 
 comment has been designed so as not interfere other
